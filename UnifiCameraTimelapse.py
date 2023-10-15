@@ -17,6 +17,29 @@ SNAPSHOT_DIR = './snapshots/'
 CHECK_EXTENSION = "/snap.jpeg"
 FFMPEG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ffmpeg.exe')
 
+def is_ffmpeg_installed():
+    try:
+        result = subprocess.run(["where", "ffmpeg"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # Check if the path returned by the 'where' command is NOT the local directory
+        return os.path.dirname(os.path.abspath(result.stdout.decode().strip())) != os.path.dirname(os.path.abspath(__file__))
+    except:
+        return False
+
+def get_ffmpeg_path():
+    if is_ffmpeg_installed():
+        print("Using system-wide installation of FFMpeg.")
+        return "ffmpeg"
+    else:
+        if os.path.exists(FFMPEG_PATH):
+            print(f"Using local FFMpeg executable at {FFMPEG_PATH}.")
+            return FFMPEG_PATH
+        else:
+            print("Error: FFMpeg not found!")
+            print("Please ensure FFMpeg is either installed system-wide or the ffmpeg.exe is present in the script directory.")
+            exit(1)  # This will halt the programme
+
+ffmpeg_path = get_ffmpeg_path()
+
 def get_default_ip_range():
     # Get the IP address of the machine
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -535,7 +558,7 @@ class CameraApp(tk.Tk):
 
     # Using FFmpeg's concat demuxer to read the files from the txt file
         command = [
-            FFMPEG_PATH,
+            ffmpeg_path,
             '-f', 'concat',
             '-safe', '0',
               '-i', filelist_path,
