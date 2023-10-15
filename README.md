@@ -27,10 +27,7 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 5. Configure your desired settings and start capturing!
 6. To convert previously stored snapshots, simply select the relevant folder and the script will handle the rest.
 
-## License:
-This code is intended for non-commercial use only.
+## License
+[![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-## Support:
-For issues, suggestions, or general inquiries, visit [my GitHub](https://github.com/inertiacreeping).
-
-© Morris Lazootin 2023
+**Unifi Camera Timelapse Creator** © 2023 by Morris Lazootin is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
