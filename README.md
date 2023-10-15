@@ -11,6 +11,9 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 - Convert previously stored snapshots into a timelapse video.
 
 ## Prerequisites:
+
+Before using the script, ensure that you've logged into each UniFi camera and enabled the **Anonymous Snapshots** feature. This is crucial for the script to be able to capture snapshots.
+
 1. [Python 3](https://www.python.org/downloads/)
 2. [Tkinter](https://docs.python.org/3/library/tkinter.html) - For the GUI.
 3. [Requests](https://docs.python-requests.org/en/master/) - For making HTTP requests to the cameras.
@@ -52,7 +55,7 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
 2. Navigate to the directory containing the script.
 3. Run the script using Python:
     ```bash
-    python <script_name>.py
+    python UnifiCameraTimelapse.py
     ```
 4. The GUI will appear. Start by discovering cameras or manually adding them.
 5. Configure your desired settings and start capturing!
