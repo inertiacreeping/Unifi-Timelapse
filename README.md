@@ -1,6 +1,21 @@
-# UniFi Camera Timelapse Creator
+# UniFi Camera Timelapse Creator (Windows)
 
 This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then *automagically* compiles them into a timelapse video once the capturing session is complete.
+
+## Download / How to use it?
+
+If you know how to use Python, you probably don't need me to explain.
+
+But if you don't, then read on:
+
+1. [**Click here to download UnifiCameraTimelapse.zip**](https://raw.githubusercontent.com/inertiacreeping/Unifi-Timelapse/main/UnifiCameraTimelapse.zip)
+- Extract  **UnifiCameraTimelapse.exe** into a folder of your choosing.
+2. [**Click here to download FFmpeg**](https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.7z)
+- open the 7z file and located **ffmpeg.exe** inside the /bin/ folder.
+- copy **ffmpeg.exe** into the same folder as **UnifiCameraTimelapse.exe**.
+Double click UnifiCameraTimelapse.exe to run the script - clicking past any Windows security warnings.
+
+That's it!
 
 ![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/ef83bf4f-4cd7-4921-8eb1-a83a66052de3)
 
@@ -9,7 +24,7 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 - Configure capture settings like snapshot frequency and output video frame rate.
 - One-click start for immediate timelapse creation.
 - Schedule recordings to automatically create a timelapse during specific intervals.
-- View metrics from the previous session, such as elapsed time, total captures, and estimated video length.
+- View metrics from the previous session, such as elapsed time, total captures, file size of camptures, and estimated video length.
 - Convert previously stored snapshots into a timelapse video.
 
 ## Prerequisites:
@@ -36,11 +51,11 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 
 5. Now, if you append /snap.jpeg to the IP address of your camera, you should see a static jpeg snapshot of what the camera sees.
 
-### Required dependencies:
+### Required dependencies (if using Python - Windows users only need to download and install FFMpeg):
 
 1. [Python 3](https://www.python.org/downloads/)
-2. [Tkinter](https://docs.python.org/3/library/tkinter.html) - For the GUI.
-3. [Requests](https://docs.python-requests.org/en/master/) - For making HTTP requests to the cameras.
+2. [Tkinter](https://docs.python.org/3/library/tkinter.html)
+3. [Requests](https://docs.python-requests.org/en/master/)
 4. [FFmpeg](https://ffmpeg.org/download.html) - For converting images to video. System-wide or local install (ie, ffmpeg.exe located in script folder) works fine - this script will check for both.
 
 ## Usage:
@@ -106,3 +121,8 @@ This software includes [FFmpeg](https://ffmpeg.org/) licensed under the [LGPLv2.
 
 The source code of FFmpeg can be found [here](https://ffmpeg.org/download.html).
 
+### [Rafael Sampaio](https://github.com/rafasamp)
+
+https://webcache.googleusercontent.com/search?q=cache:mCfoBv8q4lYJ:https://www.rafaelsampaio.net/tech/create-a-timelapse-with-unifi-and-ffmpeg/&hl=en&gl=nz
+
+<p align="center">Apologies in advance, I don't really know what I'm doing 💔</p>
