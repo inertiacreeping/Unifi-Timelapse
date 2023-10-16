@@ -89,7 +89,7 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
    - "**Start schedule** for the capture session to begin and end at a specific time.
        - If you start a schedule *inside* the sheduled times, the capturing will begin immediately.
        - There mgiht be a slight delay to the start/end of a scheduled capture session, due to the way the scheduler works.
-7. To convert previously stored snapshots, click on the "**Convert Existing Images**" button, select the relevant folder of captures, and the script will handle the rest.
+7. To convert previously captured snapshots into a video (perhaps with a different framerate), click on the "**Convert Existing Images**" button, select the relevant folder of captured snapshots, and the script will handle the rest.
 
 #### Capture Locations
 Captures will be stored in /captures/IP ADDRESS/Date_time.
