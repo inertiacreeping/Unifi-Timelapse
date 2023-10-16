@@ -2,7 +2,7 @@
 
 This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then *automagically* compiles them into a timelapse video once the capturing session is complete.
 
-![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/9bdc4261-0c3c-4ed4-ab26-075534f6d395)
+![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/ef83bf4f-4cd7-4921-8eb1-a83a66052de3)
 
 ## Features:
 - Automatically detects your network, then discovers available UniFi Cameras on your network.
@@ -83,14 +83,18 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
 1. Run the script.
 2. Select one or more discovered cameras by clicking the checkboxes next to their IP addresses.
 3. Change the desired capture rate and output video frames per second (FPS)
-   - an estimate for how long your video will be will be displayed below.
-5. Either click on "**Start capturing**" to begin an immediate capture session, or "**Start schedule** for the capture session to begin and end at a specific time".
-6. To convert previously stored snapshots, click on the "**Convert Existing Images**" button, select the relevant folder of captures, and the script will handle the rest.
+   - an estimate for frames, storage size, and video output length will be calculated and displayed below.
+5. Click on:
+   - "**Start capturing**" to begin an immediate capture session, or;
+   - "**Start schedule** for the capture session to begin and end at a specific time.
+       - If you start a schedule *inside* the sheduled times, the capturing will begin immediately.
+       - There mgiht be a slight delay to the start/end of a scheduled capture session, due to the way the scheduler works.
+7. To convert previously stored snapshots, click on the "**Convert Existing Images**" button, select the relevant folder of captures, and the script will handle the rest.
 
 #### Capture Locations
-Captures will be stored in /captures/IP ADDRESS/Date_time
+Captures will be stored in /captures/IP ADDRESS/Date_time.
 
-Videos will be created and stored in the same folder as the captures
+Videos are created and stored in the same folder as the captures.
 
 ## License
 [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
