@@ -1,6 +1,6 @@
 # UniFi Camera Timelapse Creator
 
-This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then automagically compiles them into a timelapse video.
+This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then automagically compiles them into a timelapse video once the capturing session is complete.
 
 ![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/9bdc4261-0c3c-4ed4-ab26-075534f6d395)
 
@@ -48,6 +48,8 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 
 ### Specifying IP Addresses or IP Range
 
+Without any user interaction, this script will detect the IP range your machine is using, then scan that entire IP Range for any IP address which returns an image at **IP.ADDRESS**/snap.jpeg (indicating that a Unifi camera exists at this IP address).
+
 To make the search process more efficient, you can provide the script with either specific IP addresses of the cameras or an IP range to search within.
 
 #### 1. **Specifying IP Addresses**:
@@ -79,10 +81,10 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
 ### Usage
 
 1. Run the script.
-2. Select one or more discovered cameras, by clicking the checkboxes next to their IP addresses.
+2. Select one or more discovered cameras by clicking the checkboxes next to their IP addresses.
 3. Change the desired capture rate and output video frames per second (FPS) - an estimate for how long your video will be will be displayed below.
-4. Either click on "start capturing" to begin an immediate capture session, or "start schedule".
-5. To convert previously stored snapshots, simply select the relevant folder and the script will handle the rest.
+4. Either click on "**Start capturing**" to begin an immediate capture session, or "**Start schedule** for the capture session to begin and end at a specific time".
+5. To convert previously stored snapshots, click on the "**Convert Existing Images**" button, select the relevant folder of captures, and the script will handle the rest.
 
 ## License
 [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
