@@ -151,9 +151,7 @@ class CameraApp(tk.Tk):
 
     # Helper function for disabling user input when captures are running
     def set_widget_states(self, state):
-        # Disable/Enable Camera Checkboxes
-        for var in self.camera_vars.values():
-            var.set(False)  # Optionally uncheck all checkboxes when disabling
+        # Optionally uncheck all checkboxes when disabling
         for chk in self.main_frame.winfo_children():
             if isinstance(chk, tk.Checkbutton):
                 chk.configure(state=state)
