@@ -9,7 +9,7 @@ If you know how to use Python, you probably don't need me to explain.
 But if you don't, then read on:
 
 1. [**Click here to download UnifiCameraTimelapse.zip**](https://raw.githubusercontent.com/inertiacreeping/Unifi-Timelapse/main/UnifiCameraTimelapse.zip)
-- Extract  **UnifiCameraTimelapse.exe** into a folder of your choosing.
+- Extract the folder onto your.
 2. [**Click here to download FFmpeg**](https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.7z)
 - open the 7z file and located **ffmpeg.exe** inside the /bin/ folder.
 - copy **ffmpeg.exe** into the same folder as **UnifiCameraTimelapse.exe**.
