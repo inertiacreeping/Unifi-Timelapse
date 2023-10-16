@@ -1,11 +1,11 @@
 # UniFi Camera Timelapse Creator
 
-This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then compiles them into a timelapse video.
+This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then automagically compiles them into a timelapse video.
 
 ![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/9bdc4261-0c3c-4ed4-ab26-075534f6d395)
 
 ## Features:
-- Automatically discover UniFi Cameras on your network.
+- Automatically detects your network, then discovers available UniFi Cameras on your network.
 - Configure capture settings like snapshot frequency and output video frame rate.
 - One-click start for immediate timelapse creation.
 - Schedule recordings to automatically create a timelapse during specific intervals.
@@ -16,7 +16,18 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 
 ### Things to do first:
 
-Before using the script, ensure that you've previously logged into each UniFi camera and enabled the **Anonymous Snapshots** feature. This is crucial for the script to be able to capture snapshots.
+Before using the script, ensure that you've previously logged into each UniFi camera and enabled the **Anonymous Snapshots** feature. 
+This is crucial for the script to be able to capture snapshots, as this script relies on scraping a snapshot from each Camera from **IP ADDRESS**/snap.jpeg
+
+1. Log into **Unifi Protect**, click on the **Settings Cog** in the left-hand menu, click on **System** then reveal your **Recovery Code**. Copy this code.
+![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/0703b263-0ab4-46a8-ab21-43c1c72c6b32)
+2. Go to the **IP address** of your camera, which can be found in your Camera list in Unifi Protect
+![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/15704de7-a7cc-4da9-b374-5924bb3a552b)
+3. Sign into the camera using "**ubnt**" (username) and your recovery key (password)
+![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/23bb9f78-a7e5-4d82-b3f0-ba46a7052a16)
+4. In the **Configure** tab, enable **Anonymous Snapshot**, then click **Save Changes**
+![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/7b9cd643-aac4-4f23-bb01-ff3f141730c7)
+5. Now, if you append /snap.jpeg to the IP address of your camera, you should see a static jpeg snapshot of what the camera sees.
 
 ### Required dependencies:
 
