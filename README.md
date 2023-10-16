@@ -1,6 +1,6 @@
 # UniFi Camera Timelapse Creator
 
-This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then automagically compiles them into a timelapse video once the capturing session is complete.
+This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then *automagically* compiles them into a timelapse video once the capturing session is complete.
 
 ![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/9bdc4261-0c3c-4ed4-ab26-075534f6d395)
 
