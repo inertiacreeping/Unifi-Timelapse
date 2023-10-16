@@ -104,6 +104,8 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
        - If you start a schedule *inside* the sheduled times, the capturing will begin immediately.
        - There mgiht be a slight delay to the start/end of a scheduled capture session, due to the way the scheduler works.
 7. To convert previously captured snapshots into a video (perhaps with a different framerate), click on the "**Convert Existing Images**" button, select the relevant folder of captured snapshots, and the script will handle the rest.
+   
+![1](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/64cc49fd-462d-4e23-b716-93cd3dcaa442)
 
 > [!NOTE]
 > Captures will be stored in /captures/IP ADDRESS/Date_time.
