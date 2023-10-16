@@ -82,12 +82,14 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
 
 1. Run the script.
 2. Select one or more discovered cameras by clicking the checkboxes next to their IP addresses.
-3. Change the desired capture rate and output video frames per second (FPS) - an estimate for how long your video will be will be displayed below.
-4. Either click on "**Start capturing**" to begin an immediate capture session, or "**Start schedule** for the capture session to begin and end at a specific time".
-5. To convert previously stored snapshots, click on the "**Convert Existing Images**" button, select the relevant folder of captures, and the script will handle the rest.
+3. Change the desired capture rate and output video frames per second (FPS)
+   - an estimate for how long your video will be will be displayed below.
+5. Either click on "**Start capturing**" to begin an immediate capture session, or "**Start schedule** for the capture session to begin and end at a specific time".
+6. To convert previously stored snapshots, click on the "**Convert Existing Images**" button, select the relevant folder of captures, and the script will handle the rest.
 
-#### Note:
+#### Capture Locations
 Captures will be stored in /captures/IP ADDRESS/Date_time
+
 Videos will be created and stored in the same folder as the captures
 
 ## License
