@@ -86,8 +86,9 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
 4. Either click on "**Start capturing**" to begin an immediate capture session, or "**Start schedule** for the capture session to begin and end at a specific time".
 5. To convert previously stored snapshots, click on the "**Convert Existing Images**" button, select the relevant folder of captures, and the script will handle the rest.
 
-   -- Captures will be stored in /captures/IP ADDRESS/Date_time
-   -- Videos will be created and stored in the same folder as the captures
+#### Note:
+Captures will be stored in /captures/IP ADDRESS/Date_time
+Videos will be created and stored in the same folder as the captures
 
 ## License
 [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
