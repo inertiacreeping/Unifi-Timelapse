@@ -2,9 +2,11 @@
 
 This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then compiles them into a timelapse video.
 
+![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/9bdc4261-0c3c-4ed4-ab26-075534f6d395)
+
 ## Features:
 - Automatically discover UniFi Cameras on your network.
-- Configure capture settings like snapshot frequency and video frame rate.
+- Configure capture settings like snapshot frequency and output video frame rate.
 - One-click start for immediate timelapse creation.
 - Schedule recordings to automatically create a timelapse during specific intervals.
 - View metrics from the previous session, such as elapsed time, total captures, and estimated video length.
@@ -12,12 +14,16 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 
 ## Prerequisites:
 
-Before using the script, ensure that you've logged into each UniFi camera and enabled the **Anonymous Snapshots** feature. This is crucial for the script to be able to capture snapshots.
+### Things to do first:
+
+Before using the script, ensure that you've previously logged into each UniFi camera and enabled the **Anonymous Snapshots** feature. This is crucial for the script to be able to capture snapshots.
+
+### Required dependencies:
 
 1. [Python 3](https://www.python.org/downloads/)
 2. [Tkinter](https://docs.python.org/3/library/tkinter.html) - For the GUI.
 3. [Requests](https://docs.python-requests.org/en/master/) - For making HTTP requests to the cameras.
-4. [FFmpeg](https://ffmpeg.org/download.html) - For converting images to video. System-wide or local install (in script folder) works fine.
+4. [FFmpeg](https://ffmpeg.org/download.html) - For converting images to video. System-wide or local install (ie, ffmpeg.exe located in script folder) works fine - this script will check for both.
 
 ## Usage:
 
@@ -51,15 +57,13 @@ To make the search process more efficient, you can provide the script with eithe
 
 If neither `IP.txt` nor `IP_range.txt` files are present, the script will default to automatically searching for cameras. It will attempt to detect the local network's IP range and search within that range for any available cameras.
 
-1. Clone the repository or download the script.
-2. Navigate to the directory containing the script.
-3. Run the script using Python:
-    ```bash
-    python UnifiCameraTimelapse.py
-    ```
-4. The GUI will appear. Start by discovering cameras or manually adding them.
-5. Configure your desired settings and start capturing!
-6. To convert previously stored snapshots, simply select the relevant folder and the script will handle the rest.
+### Usage
+
+1. Run the script.
+2. Select one or more discovered cameras, by clicking the checkboxes next to their IP addresses.
+3. Change the desired capture rate and output video frames per second (FPS) - an estimate for how long your video will be will be displayed below.
+4. Either click on "start capturing" to begin an immediate capture session, or "start schedule".
+5. To convert previously stored snapshots, simply select the relevant folder and the script will handle the rest.
 
 ## License
 [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
