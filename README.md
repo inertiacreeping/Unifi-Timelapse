@@ -4,12 +4,12 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 
 ## Download / How to use it?
 
-If you know how to use Python, you probably don't need me to explain.
+If you know how to use Python, you probably don't need me to explain. Just make sure that you install FFmpeg and *pip install requests*.
 
-But if you don't, then read on:
+If you're a Windows pleb like me, then read on:
 
 1. [**Click here to download UnifiCameraTimelapse.zip**](https://raw.githubusercontent.com/inertiacreeping/Unifi-Timelapse/main/UnifiCameraTimelapse.zip)
-- Extract the folder onto your.
+- Extract the folder onto your PC. Preferably somewhere where files can be written. If you burn this to a CD, it probably won't work.
 2. [**Click here to download FFmpeg**](https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.7z)
 - open the 7z file and located **ffmpeg.exe** inside the /bin/ folder.
 - copy **ffmpeg.exe** into the same folder as **UnifiCameraTimelapse.exe**.
@@ -20,7 +20,7 @@ That's it!
 ![image](https://github.com/inertiacreeping/Unifi-Timelapse/assets/98634109/ef83bf4f-4cd7-4921-8eb1-a83a66052de3)
 
 ## Features:
-- Automatically detects your network, then discovers available UniFi Cameras on your network.
+- Automatically detects your network IP range, then discovers available UniFi Cameras.
 - Configure capture settings like snapshot frequency and output video frame rate.
 - One-click start for immediate timelapse creation.
 - Schedule recordings to automatically create a timelapse during specific intervals.
@@ -108,6 +108,7 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
 > [!NOTE]
 > Captures will be stored in /captures/IP ADDRESS/Date_time.
 > Videos are created and stored in the same folder as the captures.
+> In testing, **215 images** came out to be around **53.7MB**, while the **rendered timelapse video was only 3.29MB**. Do with that information what you will.
 
 ## License
 [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
