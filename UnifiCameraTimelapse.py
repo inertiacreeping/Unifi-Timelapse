@@ -174,6 +174,9 @@ class CameraApp(tk.Tk):
         def create_section_header(text):
             label = ttk.Label(self.main_frame, text=text, font=("Arial", 12, "bold"), anchor="center")
             label.pack(fill=tk.X, pady=(5, 5), padx=5)
+
+        self.recording_label = ttk.Label(self.main_frame, text="")
+        self.recording_label.pack(pady=5)
             
         # Section 1: Camera Selection and Setup
         create_section_header("Camera Configuration")
@@ -429,8 +432,6 @@ class CameraApp(tk.Tk):
                 self.schedule_status_label.config(foreground="white")  # set to the background color to hide
             self.blinking_state = not self.blinking_state
             self.after(500, self.toggle_blink)  # Call every 500ms for blinking effect
-        else:
-            self.schedule_status_label.config(foreground="black")
         
     def check_schedule(self):
         # If the schedule isn't running, don't proceed with the check.
@@ -520,9 +521,16 @@ class CameraApp(tk.Tk):
 
     def start_capture(self):
         # Immediately change the button states
-        self.start_button.config(state=tk.DISABLED)
-    
-        # Check if snapshot_freq is filled, otherwise default to 5 seconds
+        self.start_button.config(state=tk.DISABLED, bg="grey")
+        self.schedule_button.config(state="disabled", bg="grey")
+
+
+        # Update the recording label
+        self.schedule_status_var.set("CURRENTLY RECORDING")
+        self.schedule_status_label.config(foreground="red", font=("Arial", 10, "bold"))
+        self.toggle_blink()
+
+        # Check if snapshot_freq is filled, otherwise default to 10 seconds
         try:
             capture_frequency = int(self.snapshot_freq.get())
         except ValueError:
@@ -579,10 +587,13 @@ class CameraApp(tk.Tk):
 
     def stop_capture(self):
         self.capturing.clear()
+
+        # Clear the recording label
+        self.recording_label.config(text="")
         
         # Only update the button states if schedule is not running
         if not hasattr(self, 'is_schedule_running') or not self.is_schedule_running:
-            self.start_button.config(state=tk.NORMAL)
+            self.start_button.config(state=tk.NORMAL, bg="green")
             self.stop_button.config(state=tk.DISABLED)
 
         # Indicate that the recording was stopped manually
@@ -605,6 +616,13 @@ class CameraApp(tk.Tk):
 
         # Re-enable the user input widgets
         self.set_widget_states(tk.NORMAL)
+        self.schedule_button.config(state="normal", bg="yellow")
+
+        # Clear the schedule status label
+        self.schedule_status_var.set("")
+        self.schedule_status_label.config(foreground="black", font=("Arial", 10))
+        if hasattr(self, 'blink_id'):  # Stop blinking
+            self.after_cancel(self.blink_id)
     
     def convert_images(self, folder, camera_ip):
         framerate = self.video_framerate.get() or '24'  # default to 24fps if not provided
