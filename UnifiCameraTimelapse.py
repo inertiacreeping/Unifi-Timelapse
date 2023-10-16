@@ -17,6 +17,13 @@ SNAPSHOT_DIR = './snapshots/'
 CHECK_EXTENSION = "/snap.jpeg"
 FFMPEG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ffmpeg.exe')
 
+def calculate_timelapse_data(frequency, frame_rate, avg_size_kb=500):
+    frames_per_hour = 3600 / frequency
+    filesize_per_hour_mb = (frames_per_hour * avg_size_kb) / 1024
+    footage_duration_seconds = frames_per_hour / frame_rate
+
+    return int(frames_per_hour), int(filesize_per_hour_mb), int(footage_duration_seconds)
+
 def is_ffmpeg_installed():
     try:
         result = subprocess.run(["where", "ffmpeg"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -142,10 +149,29 @@ class CameraApp(tk.Tk):
 
         self.setup_gui()
 
+    # Helper function for disabling user input when captures are running
+    def set_widget_states(self, state):
+        # Disable/Enable Camera Checkboxes
+        for var in self.camera_vars.values():
+            var.set(False)  # Optionally uncheck all checkboxes when disabling
+        for chk in self.main_frame.winfo_children():
+            if isinstance(chk, tk.Checkbutton):
+                chk.configure(state=state)
+        
+        # Disable/Enable Entry boxes and Dropdowns
+        self.snapshot_freq.configure(state=state)
+        self.video_framerate.configure(state=state)
+        self.start_hour_dropdown.configure(state=state)
+        self.start_minute_dropdown.configure(state=state)
+        self.start_ampm_dropdown.configure(state=state)
+        self.end_hour_dropdown.configure(state=state)
+        self.end_minute_dropdown.configure(state=state)
+        self.end_ampm_dropdown.configure(state=state)
+
     def open_github(self, event=None):
         webbrowser.open("https://github.com/inertiacreeping")
               
-    def setup_gui(self):
+    def setup_gui(self):     
         # Helper function for creating section headers
         def create_section_header(text):
             label = ttk.Label(self.main_frame, text=text, font=("Arial", 12, "bold"), anchor="center")
@@ -153,6 +179,9 @@ class CameraApp(tk.Tk):
             
         # Section 1: Camera Selection and Setup
         create_section_header("Camera Configuration")
+
+        # Timelapse estimated stats var
+        self.timelapse_data_var = tk.StringVar(value="")
         
         # Camera selection, snapshot frequency, and FPS settings
         camera_heading = ttk.Label(self.main_frame, text="Select your Cameras", font=("Arial", 10, "bold"))
@@ -178,6 +207,17 @@ class CameraApp(tk.Tk):
         self.video_framerate = tk.Entry(self.main_frame)
         self.video_framerate.insert(0, "24")  # Default value of 24
         self.video_framerate.pack(pady=5)
+
+        # Attach event listeners
+        self.snapshot_freq.bind("<KeyRelease>", self.update_timelapse_data_display)
+        self.video_framerate.bind("<KeyRelease>", self.update_timelapse_data_display)
+
+        # Initial update
+        self.update_timelapse_data_display()
+
+        # Add the label to the GUI
+        self.timelapse_data_label = ttk.Label(self.main_frame, textvariable=self.timelapse_data_var)
+        self.timelapse_data_label.pack(pady=(5, 5))
 
         # Section 2: Immediate Capture Session
         create_section_header("One-Click Start")
@@ -287,7 +327,7 @@ class CameraApp(tk.Tk):
         github_link.pack(side=tk.BOTTOM)
 
         disclaimer_label = ttk.Label(self.main_frame, 
-                                     text="This code can only be used with a non-commercial license.",
+                                     text="UniFi Camera Timelapse Creator is licensed under CC BY-NC-SA 4.0.",
                                      font=("Arial", 8))
         disclaimer_label.pack(side=tk.BOTTOM)
 
@@ -295,6 +335,17 @@ class CameraApp(tk.Tk):
                             text="© Morris Lazootin 2023", 
                             font=("Arial", 8))
         copyright_label.pack(side=tk.BOTTOM)
+
+    def update_timelapse_data_display(self, event=None):
+        # Get current values from the entry boxes
+        try:
+            frequency = float(self.snapshot_freq.get())
+            frame_rate = float(self.video_framerate.get())
+            
+            frames, filesize, duration = calculate_timelapse_data(frequency, frame_rate)
+            self.timelapse_data_var.set(f"{frames} frames, {filesize}MB, {duration} seconds of footage per camera per hour.")
+        except ValueError:  # This will handle cases where the entry boxes might not have valid numbers
+            self.timelapse_data_var.set("Enter valid snapshot frequency and frame rate.")
 
     def toggle_schedule(self):
         # Oh, look who's trying to start the schedule!
@@ -333,6 +384,13 @@ class CameraApp(tk.Tk):
             # Let's keep an eye on the time and see when it's showtime
             self.check_schedule_id = self.after(10000, self.check_schedule)
 
+            # If starting the schedule, disable all widgets
+            if self.is_schedule_running:
+                self.set_widget_states(tk.DISABLED)
+            # If stopping the schedule, enable all widgets
+            else:
+                self.set_widget_states(tk.NORMAL)
+
         # Oh, changed your mind? Stopping the schedule now!
         else:
             # Turning off the schedule, hope you had a good reason!
@@ -357,6 +415,9 @@ class CameraApp(tk.Tk):
             self.start_button.config(state=tk.NORMAL, bg="green")
             self.stop_button.config(state=tk.DISABLED, bg="red")
             self.convert_button.config(state=tk.NORMAL)
+
+            # Re-enable the user input widgets
+            self.set_widget_states(tk.NORMAL)
             
             # Stopping the check_schedule loop, because we're not waiting anymore
             if hasattr(self, 'check_schedule_id'):
@@ -479,6 +540,9 @@ class CameraApp(tk.Tk):
 
         self.begin_capture()
 
+        # Disable all widgets
+        self.set_widget_states(tk.DISABLED)
+
         # Only re-enable the "Stop Capturing" button if the schedule isn't running
         if not (hasattr(self, 'is_schedule_running') and self.is_schedule_running):
             self.stop_button.config(state=tk.NORMAL)
@@ -540,6 +604,9 @@ class CameraApp(tk.Tk):
         # Reset the blinking state and set the label to its original color
         self.blinking_state = False
         self.schedule_status_label.config(foreground="black")
+
+        # Re-enable the user input widgets
+        self.set_widget_states(tk.NORMAL)
     
     def convert_images(self, folder, camera_ip):
         framerate = self.video_framerate.get() or '24'  # default to 24fps if not provided
