@@ -14,10 +14,9 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 
 ## Prerequisites:
 
-### Things to do first:
-
-- Before using the script, ensure that you've previously logged into each UniFi camera and enabled the **Anonymous Snapshots** feature. 
-- This is crucial for the script to be able to capture snapshots, as this script relies on scraping a snapshot from each Camera from **IP ADDRESS**/snap.jpeg
+> [!IMPORTANT]
+> Before using the script, ensure that you've previously logged into each UniFi camera and enabled the **Anonymous Snapshots** feature. 
+> This is crucial for the script to be able to capture snapshots, as this script relies on scraping a snapshot from each Camera from **IP ADDRESS**/snap.jpeg
 
 1. Log into **Unifi Protect**, click on the **Settings Cog** in the left-hand menu, click on **System** then reveal your **Recovery Code**. Copy this code.
     
@@ -91,10 +90,9 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
        - There mgiht be a slight delay to the start/end of a scheduled capture session, due to the way the scheduler works.
 7. To convert previously captured snapshots into a video (perhaps with a different framerate), click on the "**Convert Existing Images**" button, select the relevant folder of captured snapshots, and the script will handle the rest.
 
-#### Capture Locations
-Captures will be stored in /captures/IP ADDRESS/Date_time.
-
-Videos are created and stored in the same folder as the captures.
+> [!NOTE]
+> Captures will be stored in /captures/IP ADDRESS/Date_time.
+> Videos are created and stored in the same folder as the captures.
 
 ## License
 [![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
