@@ -107,7 +107,9 @@ If neither `IP.txt` nor `IP_range.txt` files are present, the script will defaul
 
 > [!NOTE]
 > Captures will be stored in /captures/IP ADDRESS/Date_time.
+> 
 > Videos are created and stored in the same folder as the captures.
+>
 > In testing, **215 images** came out to be around **53.7MB**, while the **rendered timelapse video was only 3.29MB**. Do with that information what you will.
 
 ## License
