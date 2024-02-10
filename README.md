@@ -17,11 +17,11 @@ Thankfully my G3 Bullet still returns a 1920x1080 image (for how long? WHO KNOWS
 ```SSH
 ssh root@192.168.1.1 (insert your IP address here) 
 ```
-4. Roll back to a previous Protect version using:
+3. Roll back to a previous Protect version using:
 ```SSH
 apt-get install --reinstall --allow-downgrades unifi-protect=2.10.11 -y
 ```
-6. Turn off auto-update in OS Settings -> Applications -> Uncheck "Applications" checkbox next to the auto-update heading.
+4. Turn off auto-update in OS Settings -> Applications -> Uncheck "Applications" checkbox next to the auto-update heading.
   
 ## Download / How to use it?
 
