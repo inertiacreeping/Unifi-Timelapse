@@ -6,7 +6,7 @@ This script provides a GUI to create timelapses from UniFi Cameras. It discovers
 
 Unifi can't help themselves from absolutely fucking their paying customers. Be warned that new cameras (specifically the G5 lineup and possibly new firmware of older models) reduces /snap captures to 640x360 pixels.
 
-[What a bunch of fuckwits, seriously.](https://community.ui.com/questions/Live-image-bad/20b72512-99f8-4bd3-9206-2d799fb1e015)
+["Expected Behaviour".](https://community.ui.com/questions/Live-image-bad/20b72512-99f8-4bd3-9206-2d799fb1e015)
 
 Thankfully my G3 Bullet still returns a 1920x1080 image (for how long? WHO KNOWS)
 
