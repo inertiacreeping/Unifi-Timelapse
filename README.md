@@ -11,6 +11,18 @@ What a bunch of fuckwits, seriously.
 
 Thankfully my G3 Bullet still returns a 1920x1080 image (for how long? WHO KNOWS)
 
+**Fix:** 
+1. Turn on SSH on your Unifi controller which hosts the Protect instance (you'll have to set a SSH password)
+2. SSH into your controller with:
+```SSH
+ssh root@192.168.1.1 (insert your IP address here) 
+```
+4. Roll back to a previous Protect version using:
+```SSH
+apt-get install --reinstall --allow-downgrades unifi-protect=2.10.11 -y
+```
+6. Turn off auto-update in OS Settings -> Applications -> Uncheck "Applications" checkbox next to the auto-update heading.
+  
 ## Download / How to use it?
 
 If you know how to use Python, you probably don't need me to explain. Just make sure that you install FFmpeg and *pip install requests*.
