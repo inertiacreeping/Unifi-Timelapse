@@ -2,6 +2,15 @@
 
 This script provides a GUI to create timelapses from UniFi Cameras. It discovers cameras on your local network, captures snapshots based on a specified frequency, and then *automagically* compiles them into a timelapse video once the capturing session is complete.
 
+## Warning
+
+Unifi can't help themselves from absolutely fucking their paying customers. Be warned that new cameras (specifically the G5 lineup and possibly new firmware of older models) reduces /snap captures to 640x360 pixels.
+https://community.ui.com/questions/G5-camera-snapshot-resolution/cb0063d0-b534-4320-a96b-ac2e9a546eaf?page=1
+
+What a bunch of fuckwits, seriously.
+
+Thankfully my G3 Bullet still returns a 1920x1080 image (for how long? WHO KNOWS)
+
 ## Download / How to use it?
 
 If you know how to use Python, you probably don't need me to explain. Just make sure that you install FFmpeg and *pip install requests*.
