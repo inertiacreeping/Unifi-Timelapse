@@ -21,7 +21,9 @@ ssh root@192.168.1.1 (insert your IP address here)
 apt-get install --reinstall --allow-downgrades unifi-protect=2.10.11 -y
 ```
 4. Turn off auto-update in OS Settings -> Applications -> Uncheck "Applications" checkbox next to the auto-update heading.
-  
+
+Note - I'm having trouble with my Unifi OS / Protect still auto-updating even though I've turned auto-update off. Will report back once I find a solution.
+
 ## Download / How to use it?
 
 If you know how to use Python, you probably don't need me to explain. Just make sure that you install FFmpeg and *pip install requests*.
